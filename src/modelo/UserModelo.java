@@ -70,6 +70,34 @@ ArrayList<User> users = new ArrayList<User>();
 		return null;
 	}
 	
+	public User selectByEmail(String email){
+			
+			User user = new User();
+			try {
+	
+				
+				PreparedStatement pst = super.conexion.prepareStatement("select * from user where email=?");
+				pst.setString(1, email);
+				ResultSet rs = pst.executeQuery();
+				if (rs.next()){
+				user.setId(rs.getInt("id_user"));
+				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
+				user.setName(rs.getString("name"));
+				user.setSurname(rs.getString("surname"));
+				user.setImage(rs.getString("image"));
+				user.setBirthdate(rs.getDate("birthdate"));
+				user.setRol(rs.getInt("rol"));
+				return user;
+				}
+						
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}
+	
 	public void update(User user){
 		
 		PreparedStatement pst;
