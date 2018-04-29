@@ -3,5 +3,5 @@
 <%
 session.removeAttribute("iniciado");
 out.print("loggout realizado");
-response.sendRedirect("index.jsp");
+response.sendRedirect("/Klas/index.html");
 %>

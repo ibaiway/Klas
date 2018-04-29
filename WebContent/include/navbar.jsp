@@ -19,6 +19,6 @@
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <a href="auth/logout.jsp"> <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button></a>
+    <a href="/Klas/auth/logout.jsp"> <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button></a>
   </div>
 </nav>
