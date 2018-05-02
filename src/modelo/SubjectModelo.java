@@ -25,9 +25,29 @@ public class SubjectModelo extends Conector {
 				subject.setId(rs.getInt("id_subject"));
 				subject.setDescription(rs.getString("description"));
 				subject.setName(rs.getString("name"));
-				subject.setTopics(TopicModelo.selectByIdSubject(subject));
-				subject.setUsers(UserModelo.selectByIdSubject(subject));
+				//subject.setTopics(TopicModelo.selectBySubject(subject));
+				//subject.setUsers(UserModelo.selectBySubject(subject));
 				subjects.add(subject);
+			}
+			return subjects;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ArrayList<Subject> selectByUser(int id){
+		
+		
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select * from subjectuser where id_user=?");
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next()){
+				Subject subject = new Subject();
+				subject.setId(rs.getInt("id_subject"));
 			}
 			return subjects;
 		} catch (SQLException e) {

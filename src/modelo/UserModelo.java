@@ -19,7 +19,7 @@ ArrayList<User> users = new ArrayList<User>();
 		try {
 			pst = super.conexion.prepareStatement("select * from user");
 			ResultSet rs = pst.executeQuery();
-			
+			SubjectModelo subjectModelo = new SubjectModelo();
 			while (rs.next()){
 				User user = new User();
 				user.setId(rs.getInt("id_user"));
@@ -30,7 +30,7 @@ ArrayList<User> users = new ArrayList<User>();
 				user.setImage(rs.getString("image"));
 				user.setBirthdate(rs.getDate("birthdate"));
 				user.setRol(rs.getInt("rol"));
-				user.setSubjects(SubjectModelo.selectById(subject));
+				user.setSubjects(subjectModelo.selectByUser(user.getId()));
 				users.add(user);
 			}
 			return users;
@@ -45,6 +45,7 @@ ArrayList<User> users = new ArrayList<User>();
 	public User select(int id){
 		
 		User user = new User();
+		SubjectModelo subjectModelo = new SubjectModelo();
 		try {
 
 			
@@ -60,6 +61,7 @@ ArrayList<User> users = new ArrayList<User>();
 			user.setImage(rs.getString("image"));
 			user.setBirthdate(rs.getDate("birthdate"));
 			user.setRol(rs.getInt("rol"));
+			user.setSubjects(subjectModelo.selectByUser(user.getId()));
 			return user;
 			}
 					
@@ -73,6 +75,7 @@ ArrayList<User> users = new ArrayList<User>();
 	public User selectByEmail(String email){
 			
 			User user = new User();
+			SubjectModelo subjectModelo = new SubjectModelo();
 			try {
 	
 				
@@ -88,6 +91,7 @@ ArrayList<User> users = new ArrayList<User>();
 				user.setImage(rs.getString("image"));
 				user.setBirthdate(rs.getDate("birthdate"));
 				user.setRol(rs.getInt("rol"));
+				user.setSubjects(subjectModelo.selectByUser(user.getId()));
 				return user;
 				}
 						
