@@ -87,4 +87,22 @@ public class AssignmentModelo extends Conector{
 		}
 	}
 	
+
+
+	public void delete (int id_assignment){
+		//delete from delivery where id = 6
+		PreparedStatement pst;
+		try {
+			pst = super.conexion.prepareStatement("delete from assignment where id_assignment = ?");
+			pst.setInt(1, id_assignment);
+			
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	
 }
