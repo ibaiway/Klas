@@ -6,7 +6,7 @@
   <title>Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <jsp:include page="include/resources.html"></jsp:include>
- 
+  <jsp:include page="include/sessioncheck.jsp"></jsp:include>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
