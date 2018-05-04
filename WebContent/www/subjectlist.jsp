@@ -10,9 +10,24 @@
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
+<%@ page import="modelo.SubjectModelo"%>
+<%@ page import="objects.User"%>
+<%@ page import="objects.Subject"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Iterator"%>
+<%
+SubjectModelo subjectModelo = new SubjectModelo();
+User user = (User) session.getAttribute("user");
 
-
-
+Iterator<Subject> i = subjectModelo.selectByUser(user.getId()).iterator();
+while(i.hasNext()){
+	Subject subject = i.next();
+	
+	out.print(subject.getName() + " - " + subject.getDescription());
+	
+	out.print("---------------------------");
+}
+%>
 
 </body>
 </html>
