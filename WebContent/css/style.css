@@ -5,3 +5,7 @@ position: fixed;
     width: 100%;
    
 }
+
+.prueba:hover{
+	background-color: blue;
+}

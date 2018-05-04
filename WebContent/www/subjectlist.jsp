@@ -10,24 +10,65 @@
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
-<%@ page import="modelo.SubjectModelo"%>
-<%@ page import="objects.User"%>
-<%@ page import="objects.Subject"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.Iterator"%>
-<%
-SubjectModelo subjectModelo = new SubjectModelo();
-User user = (User) session.getAttribute("user");
 
-Iterator<Subject> i = subjectModelo.selectByUser(user.getId()).iterator();
-while(i.hasNext()){
-	Subject subject = i.next();
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Welcome</h1>
+      
+				
+		<%@ page import="modelo.SubjectModelo"%>
+		<%@ page import="objects.User"%>
+		<%@ page import="objects.Subject"%>
+		<%@ page import="java.util.ArrayList"%>
+		<%@ page import="java.util.Iterator"%>
+		<div class="list-group">
+		<%
+			SubjectModelo subjectModelo = new SubjectModelo();
+			User user = (User) session.getAttribute("user");
+			ArrayList<Subject> subjects = subjectModelo.selectByUser(user.getId());
+			session.setAttribute("subjects", subjects);
+			Iterator<Subject> i = subjects.iterator();
+			while (i.hasNext()) {
+				Subject subject = i.next();
+				
+				
 	
-	out.print(subject.getName() + " - " + subject.getDescription());
-	
-	out.print("---------------------------");
-}
-%>
+				
+			
+		%>
+
+				<div class="prueba">
+					<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1"><% out.print(subject.getName()); %></h5>
+						</div>
+						<p class="mb-1"><% out.print(subject.getDescription()); %></p>
+					</a>
+				</div>
+<%} %>
+
+				</div>
+			</div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<jsp:include page="/include/footer.html"></jsp:include>
+
+
 
 </body>
 </html>
