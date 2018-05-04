@@ -47,7 +47,7 @@ public class SubjectModelo extends Conector {
 			
 			while (rs.next()){
 				Subject subject = new Subject();
-				subject.setId(rs.getInt("id_subject"));
+				subject = select(rs.getInt("id_subject"));
 				subjects.add(subject);
 			}
 			return subjects;
@@ -59,23 +59,21 @@ public class SubjectModelo extends Conector {
 	}
 
 	
-	public Subject select(int id){
-		
-		Subject subject = new Subject();
+	public Subject select(int id) {
+
 		try {
 
-			
 			PreparedStatement pst = super.conexion.prepareStatement("select * from subject where id_subject=?");
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
-			if (rs.next()){
-			subject.setId(rs.getInt("id"));
-			subject.setName(rs.getString("name"));
-			subject.setDescription(rs.getString("description"));
-			return subject;
+			if (rs.next()) {
+				Subject subject = new Subject();
+				subject.setId(rs.getInt("id_subject"));
+				subject.setName(rs.getString("name"));
+				subject.setDescription(rs.getString("description"));
+				return subject;
 			}
-			
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
