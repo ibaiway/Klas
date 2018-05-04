@@ -48,6 +48,7 @@ public class SubjectModelo extends Conector {
 			while (rs.next()){
 				Subject subject = new Subject();
 				subject.setId(rs.getInt("id_subject"));
+				subjects.add(subject);
 			}
 			return subjects;
 		} catch (SQLException e) {
