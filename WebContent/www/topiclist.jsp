@@ -37,6 +37,14 @@
 			while (i.hasNext()) {
 				Topic topic = i.next();
 				
+				/*
+				*
+				*Hacer que de cada topic salga una lista de assignments
+				*Topic no necesita descripción
+				*La barra topic sera azul y los assignments blancos
+				*				
+				*
+				*/
 				
 	
 				
