@@ -6,7 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <jsp:include page="../include/resources.html"></jsp:include>
-
+<script>
+function myFunction() {
+    var element = document.getElementById("asignatura");
+    element.classList.add("active");
+}
+</script>
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
@@ -21,7 +26,7 @@
     <div class="col-sm-8 text-left"> 
       <h1>Welcome</h1>
       
-				
+			
 		<%@ page import="modelo.SubjectModelo"%>
 		<%@ page import="objects.User"%>
 		<%@ page import="objects.Subject"%>
@@ -44,7 +49,7 @@
 		%>
 
 				<div class="prueba">
-					<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+					<a href="#" id="asignatura" onmouseover="myFunction()" class="list-group-item list-group-item-action flex-column align-items-start">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1"><% out.print(subject.getName()); %></h5>
 						</div>
