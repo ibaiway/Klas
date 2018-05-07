@@ -56,6 +56,7 @@ function myFunction() {
 						<p class="mb-1"><% out.print(subject.getDescription()); %></p>
 					</a>
 				</div>
+				<br>
 <%} %>
 
 				</div>
