@@ -56,7 +56,6 @@
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1"><% out.print(topic.getTitle()); %></h5>
 						</div>
-						<p class="mb-1"><% out.print("HEYY"); %></p>
 					</a>
 				</div>
 <%} %>
