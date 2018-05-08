@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="modelo.UserModelo"%>
+<%@ page import="objects.User"%>
+<%
+	UserModelo userModelo = new UserModelo();
+	String email = request.getParameter("email");
+	if (userModelo.checkByEmail(email) == true){
+		response.sendRedirect("access.jsp?error=2");
+	}else{
+		User user = new User();
+		user.setEmail(email);
+		user.setPassword(request.getParameter("password"));
+		user.setName(request.getParameter("name"));
+		user.setSurname(request.getParameter("surname"));
+		userModelo.insert(user);
+		session.setAttribute("user", user);
+		response.sendRedirect("../home.jsp");
+	}
+			
+%>
