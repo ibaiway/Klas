@@ -102,6 +102,23 @@ ArrayList<User> users = new ArrayList<User>();
 			return null;
 		}
 	
+	public boolean checkByEmail(String email){
+		
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select * from user where email=?");
+			pst.setString(1, email);
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()){
+			return true;
+			}
+					
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public void update(User user){
 		
 		PreparedStatement pst;
@@ -116,6 +133,22 @@ ArrayList<User> users = new ArrayList<User>();
 		pst.setInt(6, user.getId());
 		pst.execute();
 		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+public void insert(User user){
+		
+		try {
+			PreparedStatement pst = conexion.prepareStatement("insert into user(titulo,autor,portada) values (?,?,?)");
+			pst.setString(1, user.getPassword());
+			pst.setString(2, user.getEmail());
+			pst.setString(3, user.getName());
+			pst.setString(3, user.getSurname());
+			pst.execute();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
