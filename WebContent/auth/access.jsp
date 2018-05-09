@@ -27,7 +27,16 @@
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<strong>Vaya!</strong> <a href="#" class="alert-link">Ha habido un problema</a> prueba otra vez.
 	</div>
-	<%}
+	<%
+		}else if( request.getParameter("error")!=null&& request.getParameter("error").equals("2")){
+		%>
+	<div class="alert alert-dismissible alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Vaya!</strong> <a href="#" class="alert-link">Ese email ya esta registrado</a> prueba con otro.
+	</div>
+	<% 
+	}
+	%>
 		
 	%>
 	<!-- Navigation -->
@@ -98,14 +107,14 @@
 							<fieldset>
 								<div class="form-group">
 									<label for="exampleInputEmail1">Nombre</label> <input name="name"
-										type="email" class="form-control" id="exampleInputEmail1"
+										type="text" class="form-control" id="exampleInputEmail1"
 										aria-describedby="emailHelp" placeholder="Introduce tu nombre">
 									<small id="emailHelp" class="form-text text-muted">Intentaremos
 										acordarnos de tu nombre</small>
 								</div>
 								<div class="form-group">
 									<label for="exampleInputEmail1">Apellido</label> <input name="surname"
-										type="email" class="form-control" id="exampleInputEmail1"
+										type="text" class="form-control" id="exampleInputEmail1"
 										aria-describedby="emailHelp"
 										placeholder="Introduce tu apellido"> <small
 										id="emailHelp" class="form-text text-muted">Tenemos

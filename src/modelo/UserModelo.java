@@ -142,11 +142,11 @@ ArrayList<User> users = new ArrayList<User>();
 public void insert(User user){
 		
 		try {
-			PreparedStatement pst = conexion.prepareStatement("insert into user(titulo,autor,portada) values (?,?,?)");
+			PreparedStatement pst = conexion.prepareStatement("insert into user(password,email,name,surname) values (?,?,?,?)");
 			pst.setString(1, user.getPassword());
 			pst.setString(2, user.getEmail());
 			pst.setString(3, user.getName());
-			pst.setString(3, user.getSurname());
+			pst.setString(4, user.getSurname());
 			pst.execute();
 			
 		} catch (SQLException e) {
