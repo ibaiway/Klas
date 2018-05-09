@@ -5,6 +5,7 @@
 <%
 	String email = request.getParameter("email");
 	String password = request.getParameter("password");
+	
 	UserModelo userModelo = new UserModelo();
 	User user = userModelo.selectByEmail(email);
 	if (user != null && password.equals(user.getPassword())) {

@@ -23,11 +23,15 @@
       
 			
 		<%@ page import="modelo.TopicModelo"%>
+		<%@ page import="modelo.AssignmentModelo"%>
+		<%@ page import="objects.Assignment" %>
 		<%@ page import="objects.User"%>
 		<%@ page import="objects.Topic"%>
 		<%@ page import="java.util.ArrayList"%>
 		<%@ page import="java.util.Iterator"%>
 		<div class="list-group">
+		
+		
 		<%
 			TopicModelo subjectModelo = new TopicModelo();
 			User user = (User) session.getAttribute("user");
@@ -46,22 +50,52 @@
 				*
 				*/
 				
-	
-				
-			
 		%>
+		
 
-				<div class="prueba">
-					<a href="topiclist.jsp?subject=<% topic.getId(); %>" id="asignatura" onmouseover="myFunction()" class="list-group-item list-group-item-action flex-column align-items-start">
+		<div id="accordion">
+		  <div class="card">
+		    <div class="card-header" id="headingOne">
+		      <h5 class="mb-0">
+		        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          <a href="topiclist.jsp?subject=<% topic.getId(); %>" id="asignatura" onmouseover="myFunction()" class="list-group-item list-group-item-action flex-column align-items-start">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1"><% out.print(topic.getTitle()); %></h5>
 						</div>
 					</a>
-				</div>
+		        </button>
+		      </h5>
+		    </div>
+		    
+		<%
+			AssignmentModelo assignmentModelo = new AssignmentModelo();
+			Topic topic2 = (Topic) session.getAttribute("topic");
+			ArrayList<Assignment> assignments = AssignmentModelo.selectPorTopic(Assignment.getId());
+			session.setAttribute("assignments", assignments);
+			Iterator<Assignment> it = assignments.iterator();
+			while (i.hasNext()){
+			Assignment assignment = it.next();	
+			}
+		
+		%>
+			  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      			<div class="card-body">
+       				 
+      			</div>
+    		</div>
+ 		 </div>
+
+
+
+
+
+				
 <%} %>
 
 				</div>
 			</div>
+			
+			
     <div class="col-sm-2 sidenav">
       <div class="well">
         <p>ADS</p>

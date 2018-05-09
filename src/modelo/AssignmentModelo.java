@@ -103,6 +103,30 @@ public class AssignmentModelo extends Conector{
 		
 		
 	}
+	
+	public ArrayList<Assignment> selectPorTopic(int id_Topic){
+		
+		ArrayList<Assignment> assignment = new ArrayList<Assignment>();
+		
+		try{
+			PreparedStatement pst = super.conexion.prepareStatement("Select * from Assignment where id = ?");
+			pst.setInt(1, id_Topic);
+			ResultSet rs= pst.executeQuery();
+			while (rs.next()){
+				Assignment assignment1 = new Assignment();
+				assignment1.setId_topic(rs.getInt("id_topic"));
+				assignment1.setTitle(rs.getString("title"));
+				assignment1.setDescription(rs.getString("description"));
+			}
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+	
+	 
 
 	
 }

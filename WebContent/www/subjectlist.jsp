@@ -33,6 +33,8 @@ function myFunction() {
 		<%@ page import="java.util.ArrayList"%>
 		<%@ page import="java.util.Iterator"%>
 		<div class="list-group">
+		
+		
 		<%
 			SubjectModelo subjectModelo = new SubjectModelo();
 			User user = (User) session.getAttribute("user");
