@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="modelo.UserModelo"%>
 <%@ page import="objects.User"%>
+<%@ page import="org.mindrot.jbcrypt.BCrypt" %>
 <%
 	UserModelo userModelo = new UserModelo();
 	String email = request.getParameter("email");
@@ -10,7 +11,7 @@
 	}else{
 		User user = new User();
 		user.setEmail(email);
-		user.setPassword(request.getParameter("password"));
+		user.setPassword(BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt(12)));
 		user.setName(request.getParameter("name"));
 		user.setSurname(request.getParameter("surname"));
 		userModelo.insert(user);
