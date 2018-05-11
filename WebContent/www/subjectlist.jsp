@@ -11,6 +11,7 @@ function myFunction() {
     var element = document.getElementById("asignatura");
     element.classList.add("active");
 }
+
 </script>
 </head>
 <body>

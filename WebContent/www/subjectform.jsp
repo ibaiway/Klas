@@ -7,6 +7,7 @@
 <title>Create Subject</title>
 <jsp:include page="../include/resources.html"></jsp:include>
 </head>
+
 <body>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
 
