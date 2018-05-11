@@ -9,7 +9,7 @@
 	
 	UserModelo userModelo = new UserModelo();
 	User user = userModelo.selectByEmail(email);
-	if (user != null && BCrypt.checkpw(password, user.getPassword()) == true) {
+	if (user != null && BCrypt.checkpw(password, user.getPassword())) {
 		session.setAttribute("user", user);
 		response.sendRedirect("../home.jsp");
 	} else {
