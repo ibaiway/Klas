@@ -41,7 +41,7 @@ public class DeliveryModelo extends Conector {
 	
 	public Delivery selectPorId(int id_delivery){
 		//crear arrayList
-				ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
+				
 				
 				try {
 					PreparedStatement pst= super.conexion.prepareStatement("select * from deliveries where id_delivery = ? ");

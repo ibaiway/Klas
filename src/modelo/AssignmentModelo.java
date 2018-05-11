@@ -40,26 +40,23 @@ public class AssignmentModelo extends Conector{
 	}
 	//Metodo para seleccionar un delivery por id
 	
-	public ArrayList<Assignment> selectPorId(int id_assignment){
-		//crear arrayList
-				ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+	public Assignment selectPorId(int id_assignment){
 				
 				try {
 					PreparedStatement pst= super.conexion.prepareStatement("select * from deliveries where id_delivery = ? ");
 					pst.setInt(1, id_assignment);
 					//st.setInt(1, "id_delivery");
 					ResultSet rs = pst.executeQuery();
-					while(rs.next()){
+					if (rs.next()) {
 						Assignment assignment = new Assignment();
 						assignment.setId_topic(rs.getInt("id_delivery"));
 						assignment.setDate(rs.getDate("date"));
 						assignment.setTime(rs.getTime("time"));
 						assignment.setTitle(rs.getString("title"));
 						assignment.setDescription(rs.getString("description"));
-						
-						assignments.add(assignment);
+						return assignment;
 					}
-					return assignments;
+					
 					
 				} catch (SQLException e) {
 					e.printStackTrace();
