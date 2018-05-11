@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Subjects</title>
 <jsp:include page="../include/resources.html"></jsp:include>
 <script>
 function myFunction() {
@@ -33,6 +33,9 @@ function myFunction() {
 		<%@ page import="java.util.ArrayList"%>
 		<%@ page import="java.util.Iterator"%>
 		<div class="list-group">
+	<div>
+	<a class="btn btn-primary" href="subjectform.jsp" role="button">Create subject</a>
+	</div>
 		
 		
 		<%
