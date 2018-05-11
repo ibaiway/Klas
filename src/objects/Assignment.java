@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Assignment {
 
-	private int id_assignment;
+	private int id;
 	private int id_topic;
 	private Date date;
 	private Time time;
@@ -15,11 +15,11 @@ public class Assignment {
 	private ArrayList<Delivery> deliveries;
 	
 	
-	public int getId_assignment() {
-		return id_assignment;
+	public int getId() {
+		return id;
 	}
-	public void setId_assignment(int id) {
-		this.id_assignment = id_assignment;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getId_topic() {
 		return id_topic;

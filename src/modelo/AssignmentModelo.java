@@ -20,9 +20,10 @@ public class AssignmentModelo extends Conector{
 
 		try {
 			Statement st = super.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from deliveries");
+			ResultSet rs = st.executeQuery("select * from assignment");
 			while (rs.next()) {
 				Assignment assignment = new Assignment();
+				assignment.setId(rs.getInt("id_assignment"));
 				assignment.setId_topic(rs.getInt("id_topic"));
 				assignment.setTitle(rs.getString("title"));
 				assignment.setDate(rs.getDate("date"));
@@ -40,16 +41,17 @@ public class AssignmentModelo extends Conector{
 	}
 	//Metodo para seleccionar un delivery por id
 	
-	public Assignment selectPorId(int id_assignment){
+	public Assignment selectPorId(int id){
 				
 				try {
-					PreparedStatement pst= super.conexion.prepareStatement("select * from deliveries where id_delivery = ? ");
-					pst.setInt(1, id_assignment);
+					PreparedStatement pst= super.conexion.prepareStatement("select * from assignment where id_assignment = ? ");
+					pst.setInt(1, id);
 					//st.setInt(1, "id_delivery");
 					ResultSet rs = pst.executeQuery();
 					if (rs.next()) {
 						Assignment assignment = new Assignment();
-						assignment.setId_topic(rs.getInt("id_delivery"));
+						assignment.setId(rs.getInt("id_assignment"));
+						assignment.setId_topic(rs.getInt("id_topic"));
 						assignment.setDate(rs.getDate("date"));
 						assignment.setTime(rs.getTime("time"));
 						assignment.setTitle(rs.getString("title"));
@@ -70,13 +72,13 @@ public class AssignmentModelo extends Conector{
 	public void update(Assignment assignment){
 		PreparedStatement pst;
 		try {
-			pst = super.conexion.prepareStatement("update deliveries set id_topic=?, date=?, time=?, title=?, description=? where id_assignment=?");
+			pst = super.conexion.prepareStatement("update assignment set id_topic=?, date=?, time=?, title=?, description=? where id_assignment=?");
 			pst.setInt(1, assignment.getId_topic());
 			pst.setDate(2, (Date) assignment.getDate());
 			pst.setTime(3, assignment.getTime());
 			pst.setString(4, assignment.getTitle());
 			pst.setString(5, assignment.getDescription());
-			pst.setInt(6, assignment.getId_assignment());
+			pst.setInt(6, assignment.getId());
 			
 			pst.executeUpdate();
 		} catch (SQLException e) {
@@ -101,26 +103,33 @@ public class AssignmentModelo extends Conector{
 		
 	}
 	
-	public ArrayList<Assignment> selectPorTopic(int id_Topic){
-		
-		ArrayList<Assignment> assignment = new ArrayList<Assignment>();
-		
-		try{
-			PreparedStatement pst = super.conexion.prepareStatement("Select * from Assignment where id = ?");
+	public Assignment selectPorTopic(int id_Topic) {
+
+		Assignment assignment = new Assignment();
+		TopicModelo topicModelo = new TopicModelo();
+
+		try {
+
+			PreparedStatement pst = super.conexion.prepareStatement("Select * from assignment where id=?");
 			pst.setInt(1, id_Topic);
-			ResultSet rs= pst.executeQuery();
-			while (rs.next()){
-				Assignment assignment1 = new Assignment();
-				assignment1.setId_topic(rs.getInt("id_topic"));
-				assignment1.setTitle(rs.getString("title"));
-				assignment1.setDescription(rs.getString("description"));
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+
+				assignment.setId_topic(rs.getInt("id"));
+				assignment.setId(rs.getInt("id_Assignment"));
+				assignment.setTitle(rs.getString("title"));
+				assignment.setDescription(rs.getString("description"));
+				assignment.setDate(rs.getDate("fecha"));
+				assignment.setTime(rs.getTime("time"));
+				return assignment;
 			}
-		}catch (SQLException e){
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
-		
+
 	}
 	
 	 
