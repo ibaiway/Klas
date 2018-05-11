@@ -34,9 +34,7 @@ function myFunction() {
 		<%@ page import="java.util.ArrayList"%>
 		<%@ page import="java.util.Iterator"%>
 		<div class="list-group">
-	<div>
-	<a class="btn btn-primary" href="subjectform.jsp" role="button">Create subject</a>
-	</div>
+	
 		
 		
 		<%
@@ -64,7 +62,9 @@ function myFunction() {
 				</div>
 				<br>
 <%} %>
-
+	<div>
+	<a class="btn btn-primary" href="subjectform.jsp" role="button">Create subject</a>
+	</div>
 				</div>
 			</div>
     <div class="col-sm-2 sidenav">
