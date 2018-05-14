@@ -19,6 +19,14 @@
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
+    <% Integer rol = (Integer) session.getAttribute("rol");
+    if(rol == 1){%>
+    	<a href='#'> <button class='btn btn-warning my-2 my-sm-0' type='submit'>ADMIN view</button></a>
+    <%}
+    	
+    	
+    	%>
+    
     <a href="/Klas/auth/logout.jsp"> <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button></a>
   </div>
 </nav>

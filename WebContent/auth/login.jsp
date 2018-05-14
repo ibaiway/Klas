@@ -11,6 +11,7 @@
 	User user = userModelo.selectByEmail(email);
 	if (user != null && BCrypt.checkpw(password, user.getPassword())) {
 		session.setAttribute("user", user);
+		session.setAttribute("rol", user.getRol());
 		response.sendRedirect("../home.jsp");
 	} else {
 		response.sendRedirect("access.jsp?error=true");
