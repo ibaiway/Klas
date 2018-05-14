@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 <jsp:include page="../include/resources.html"></jsp:include>
 <%@ page import="objects.User"%>
-<% User user = (User) session.getAttribute("user"); %>
+<%@ page import="modelo.DeliveryModelo" %>
+<% User user = (User) session.getAttribute("user");
+	DeliveryModelo deliveryModelo = new DeliveryModelo();
+%>
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
@@ -23,7 +26,7 @@
     <p class="card-text"><strong>Fecha de Nacimiento:</strong> <%= user.getBirthdate() %> </p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Trabajos entregados</strong> </li>
+    <li class="list-group-item"><strong>Trabajos entregados:</strong> <%= deliveryModelo.countByUser(user.getId()) %> </li>
     <li class="list-group-item">Dapibus ac facilisis in</li>
     <li class="list-group-item">Vestibulum at eros</li>
   </ul>

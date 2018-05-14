@@ -63,6 +63,24 @@ public class DeliveryModelo extends Conector {
 				return null;
 	}
 	
+	public int countByUser(int id) {
+
+
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select count(id_delivery) from deliveries where id_usuario = ?");
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				int deliveries = rs.getInt(1);
+				return deliveries;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	public boolean entregado(int idUser, int idAssignment){
 		
 		PreparedStatement pst;
