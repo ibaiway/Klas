@@ -9,7 +9,7 @@
 <script>
 function myFunction() {
     var element = document.getElementById("asignatura");
-    element.classList.add("active");
+    element.classList.toggle("active");
 }
 
 </script>
@@ -45,15 +45,11 @@ function myFunction() {
 			Iterator<Subject> i = subjects.iterator();
 			while (i.hasNext()) {
 				Subject subject = i.next();
-				
-				
-	
-				
-			
+							
 		%>
 
 				<div class="prueba">
-					<a href="topiclist.jsp?subject=<% subject.getId(); %>" id="asignatura" onmouseover="myFunction()" class="list-group-item list-group-item-action flex-column align-items-start">
+					<a href="topiclist.jsp?subject=<%= subject.getId() %>" id="asignatura" onmouseover="myFunction()" class="list-group-item list-group-item-action flex-column align-items-start">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1"><% out.print(subject.getName()); %></h5>
 						</div>

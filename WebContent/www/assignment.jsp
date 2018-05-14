@@ -14,7 +14,7 @@
 <%@ page import="modelo.AssignmentModelo"%>
 <% User user = (User) session.getAttribute("user"); %>
 <% AssignmentModelo assignmentModelo = new AssignmentModelo(); %>
-<% Assignment assignment = assignmentModelo.selectPorId(Integer.parseInt(request.getParameter("idAssignment"))); %>
+<% Assignment assignment = assignmentModelo.selectPorId(Integer.parseInt(request.getParameter("assignment"))); %>
 <% DeliveryModelo deliveryModelo = new DeliveryModelo(); %>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
 
@@ -30,9 +30,9 @@
       
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Card title</h4>
+    <h4 class="card-title"><%= assignment.getTitle() %></h4>
     <h6 class="card-subtitle mb-2 text-muted">
-    <% if(deliveryModelo.entregado(user.getId(), assignment.getId_assignment())){
+    <% if(deliveryModelo.entregado(user.getId(), assignment.getId())){
     	out.print("span class='badge badge-success'>Entregado</span>");
     } else{ out.print("<span class='badge badge-danger'>Sin entrega</span>");}
     %></h6>

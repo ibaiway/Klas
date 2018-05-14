@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import objects.Assignment;
 import objects.Delivery;
+import objects.Topic;
 
 public class AssignmentModelo extends Conector{
 
@@ -103,27 +104,26 @@ public class AssignmentModelo extends Conector{
 		
 	}
 	
-	public Assignment selectPorTopic(int id_Topic) {
+	public ArrayList<Assignment> selectByTopic(int id) {
 
-		Assignment assignment = new Assignment();
-		TopicModelo topicModelo = new TopicModelo();
-
+		ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 		try {
 
-			PreparedStatement pst = super.conexion.prepareStatement("Select * from assignment where id=?");
-			pst.setInt(1, id_Topic);
+			PreparedStatement pst = super.conexion.prepareStatement("Select * from assignment where id_topic=?");
+			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
-			if (rs.next()) {
-
-				assignment.setId_topic(rs.getInt("id"));
-				assignment.setId(rs.getInt("id_Assignment"));
+			while (rs.next()) {
+				Assignment assignment = new Assignment();
+				assignment.setId(rs.getInt("id_assignment"));
+				assignment.setId_topic(rs.getInt("id_topic"));
 				assignment.setTitle(rs.getString("title"));
 				assignment.setDescription(rs.getString("description"));
 				assignment.setDate(rs.getDate("fecha"));
 				assignment.setTime(rs.getTime("time"));
-				return assignment;
+				assignments.add(assignment);
 			}
-
+			return assignments;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

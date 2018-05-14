@@ -8,7 +8,19 @@
 <jsp:include page="../include/resources.html"></jsp:include>
 </head>
 <body>
-
+<%@ page import="modelo.TopicModelo"%>
+<%@ page import="modelo.AssignmentModelo"%>
+<%@ page import="objects.Assignment" %>
+<%@ page import="objects.User"%>
+<%@ page import="objects.Topic"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Iterator"%>
+<%
+TopicModelo topicModelo = new TopicModelo();
+User user = (User) session.getAttribute("user");
+ArrayList<Topic> topics = topicModelo.selectBySubject(Integer.parseInt(request.getParameter("subject")));
+Iterator<Topic> i = topics.iterator();
+%>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
 
 <div class="container-fluid text-center">    
@@ -22,77 +34,51 @@
       <h1>Welcome</h1>
       
 			
-		<%@ page import="modelo.TopicModelo"%>
-		<%@ page import="modelo.AssignmentModelo"%>
-		<%@ page import="objects.Assignment" %>
-		<%@ page import="objects.User"%>
-		<%@ page import="objects.Topic"%>
-		<%@ page import="java.util.ArrayList"%>
-		<%@ page import="java.util.Iterator"%>
-		<div class="list-group">
-		
-		
+		<div id="accordion">
 		<%
-			TopicModelo subjectModelo = new TopicModelo();
-			User user = (User) session.getAttribute("user");
-			ArrayList<Topic> subjects = subjectModelo.selectBySubject(user.getId());
-			session.setAttribute("subjects", subjects);
-			Iterator<Topic> i = subjects.iterator();
+			
 			while (i.hasNext()) {
 				Topic topic = i.next();
-				
-				/*
-				*
-				*Hacer que de cada topic salga una lista de assignments
-				*Topic no necesita descripción
-				*La barra topic sera azul y los assignments blancos
-				*				
-				*
-				*/
-				
+				int id= topic.getId();
 		%>
 		
-
-		<div id="accordion">
-		  <div class="card">
-		    <div class="card-header" id="headingOne">
-		      <h5 class="mb-0">
-		        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		          <a href="topiclist.jsp?subject=<% topic.getId(); %>" id="asignatura" onmouseover="myFunction()" class="list-group-item list-group-item-action flex-column align-items-start">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1"><% out.print(topic.getTitle()); %></h5>
-						</div>
-					</a>
-		        </button>
-		      </h5>
-		    </div>
-		    
-		<%
-			AssignmentModelo assignmentModelo = new AssignmentModelo();
-			Topic topic2 = (Topic) session.getAttribute("topic");
-			ArrayList<Assignment> assignments = AssignmentModelo.selectPorTopic(Assignment.getId());
-			session.setAttribute("assignments", assignments);
-			Iterator<Assignment> it = assignments.iterator();
-			while (i.hasNext()){
-			Assignment assignment = it.next();	
-			}
 		
-		%>
-			  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      			<div class="card-body">
-       				 
-      			</div>
-    		</div>
- 		 </div>
+  <div class="card">
+    <div class="card-header" id="heading<%=id%>">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%=id%>" aria-expanded="true" aria-controls="collapse<%=id%>">
+          <%= topic.getTitle() %>
+        </button>
+      </h5>
+    </div>
 
-
+    <div id="collapse<%=id%>" class="collapse show" aria-labelledby="heading<%=id%>" data-parent="#accordion">
+      <div class="card-body">
+      <ul class="list-group">
+        <%
+        AssignmentModelo assignmentModelo = new AssignmentModelo();
+        ArrayList<Assignment> assignments = assignmentModelo.selectByTopic(topic.getId());
+        Iterator<Assignment> e = assignments.iterator();
+        while (e.hasNext()) {
+			Assignment assignment = e.next();
+        %>
+        
+		  <li class="list-group-item d-flex justify-content-between align-items-center">
+		   <a href="assignment.jsp?assignment=<%=assignment.getId() %>"> <%= assignment.getTitle() %></a>
+		    <span class="badge badge-primary badge-pill">14</span>
+		  </li>
+        
+        <%} %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 
 
 				
 <%} %>
 
-				</div>
 			</div>
 			
 			
@@ -106,7 +92,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <jsp:include page="/include/footer.html"></jsp:include>
 
 
