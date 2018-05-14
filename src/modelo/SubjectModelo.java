@@ -98,4 +98,20 @@ public void update(Subject subject){
 			e.printStackTrace();
 		}
 	}
+
+
+
+public void insert(Subject subject) {
+	try {
+		PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO subject (name, description) values(?,?)");
+		pst.setString(1, subject.getName());
+		pst.setString(2, subject.getDescription());
+
+		pst.execute();
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+
+}
 }
