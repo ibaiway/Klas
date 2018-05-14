@@ -77,7 +77,7 @@
 					<div class="card-header">Login</div>
 					<div class="card-body">
 						<h4 class="card-title">Accede a tu cuenta</h4>
-						<form action="login.jsp" method="get">
+						<form action="login.jsp" method="post">
 							<fieldset>
 								<div class="form-group">
 									<label for="exampleInputEmail1">Email address</label> <input name='email'
