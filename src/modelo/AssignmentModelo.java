@@ -27,8 +27,8 @@ public class AssignmentModelo extends Conector{
 				assignment.setId(rs.getInt("id_assignment"));
 				assignment.setId_topic(rs.getInt("id_topic"));
 				assignment.setTitle(rs.getString("title"));
-				assignment.setDate(rs.getDate("date"));
-				assignment.setTime(rs.getTime("time"));
+				//assignment.setDate(rs.getDate("datetime"));
+				//assignment.setTime(rs.getTime("datetime"));
 				assignment.setDescription(rs.getString("description"));
 
 				assignments.add(assignment);
@@ -53,8 +53,8 @@ public class AssignmentModelo extends Conector{
 						Assignment assignment = new Assignment();
 						assignment.setId(rs.getInt("id_assignment"));
 						assignment.setId_topic(rs.getInt("id_topic"));
-						assignment.setDate(rs.getDate("date"));
-						assignment.setTime(rs.getTime("time"));
+						//assignment.setDate(rs.getDate("datetime"));
+						//assignment.setTime(rs.getTime("datetime"));
 						assignment.setTitle(rs.getString("title"));
 						assignment.setDescription(rs.getString("description"));
 						return assignment;
@@ -75,8 +75,8 @@ public class AssignmentModelo extends Conector{
 		try {
 			pst = super.conexion.prepareStatement("update assignment set id_topic=?, date=?, time=?, title=?, description=? where id_assignment=?");
 			pst.setInt(1, assignment.getId_topic());
-			pst.setDate(2, (Date) assignment.getDate());
-			pst.setTime(3, assignment.getTime());
+			//pst.setDate(2, (Date) assignment.getDate());
+			//pst.setTime(3, assignment.getTime());
 			pst.setString(4, assignment.getTitle());
 			pst.setString(5, assignment.getDescription());
 			pst.setInt(6, assignment.getId());
@@ -118,8 +118,8 @@ public class AssignmentModelo extends Conector{
 				assignment.setId_topic(rs.getInt("id_topic"));
 				assignment.setTitle(rs.getString("title"));
 				assignment.setDescription(rs.getString("description"));
-				assignment.setDate(rs.getDate("fecha"));
-				assignment.setTime(rs.getTime("time"));
+				//assignment.setDate(rs.getDate("datetime"));
+				//assignment.setTime(rs.getTime("datetime"));
 				assignments.add(assignment);
 			}
 			return assignments;
