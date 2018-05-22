@@ -3,3 +3,12 @@
     <jsp-file>/index.html</jsp-file>
 </servlet>
 
+<servlet>
+        <servlet-name>SubjectList</servlet-name>
+        <servlet-class>controlador.SubjectList</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SubjectList</servlet-name>
+        <url-pattern>/SubjectList</url-pattern>
+    </servlet-mapping>
