@@ -38,6 +38,16 @@
         <url-pattern>/CrearAsignatura</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>ListarSubject</servlet-name>
+        <servlet-class>controlador.ListarSubject</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ListarSubject</servlet-name>
+        <url-pattern>/ListarSubject</url-pattern>
+    </servlet-mapping>
+    
 	<!-- fin de los servlets -->
 
 
