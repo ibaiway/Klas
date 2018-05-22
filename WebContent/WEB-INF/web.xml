@@ -47,6 +47,15 @@
         <servlet-name>ListarSubject</servlet-name>
         <url-pattern>/ListarSubject</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangeProfile</servlet-name>
+        <servlet-class>controlador.ChangeProfile</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeProfile</servlet-name>
+        <url-pattern>/ChangeProfile</url-pattern>
+    </servlet-mapping>
     
 	<!-- fin de los servlets -->
 
