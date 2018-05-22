@@ -15,7 +15,7 @@
 		<div class="card mb-3">
 			<h3 class="card-header">Modificar datos</h3>
 			<div class="card-body">
-				<form action="#" method="post">
+				<form action="../ChangeProfile" method="post">
 					<fieldset>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Nombre</label> <input name="name"
@@ -31,7 +31,7 @@
 								placeholder="Introduce tu apellido">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Nombre</label> <input name="name"
+							<label for="exampleInputEmail1">Fecha de Nacimiento</label> <input name="birthdate"
 								type="date" class="form-control" id="exampleInputEmail1"
 								aria-describedby="emailHelp" value='<%=user.getBirthdate()%>'>
 						</div>
@@ -39,12 +39,12 @@
 							<label for="exampleInputEmail1">Email address</label> <input
 								name='email' type="email" class="form-control"
 								id="exampleInputEmail1" aria-describedby="emailHelp"
-								value='<%=user.getEmail()%>' placeholder="Enter email">
+								value='<%=user.getEmail()%>' placeholder="Enter email" readonly="">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">Password</label> <input
 								name='password' type="password" class="form-control"
-								id="exampleInputPassword1" placeholder="Password">
+								id="exampleInputPassword1" placeholder="Password" required>
 						</div>
 						<button type="submit" class="btn btn-primary">Guardar</button>
 					</fieldset>

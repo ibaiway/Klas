@@ -13,6 +13,14 @@
 %>
 </head>
 <body>
+<%
+		if ( request.getParameter("e")!=null&& request.getParameter("e").equals("1")) {
+	%>
+	<div class="alert alert-dismissible alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Exito!</strong> <a href="#" class="alert-link">La informacion se ha guardado correctamente</a> los cambios se veran reflejados en unos instantes.
+	</div>
+	<% } %>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
 <div class="container">
 
