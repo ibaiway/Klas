@@ -10,7 +10,7 @@
         <a class="nav-link" href="/Klas/home.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Klas/www/subjectlist.jsp">Asignaturas</a>
+        <a class="nav-link" href="ListarSubject">Asignaturas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/Klas/www/profile.jsp">Perfil</a>

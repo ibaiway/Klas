@@ -80,14 +80,14 @@
 						<form action="login.jsp" method="post">
 							<fieldset>
 								<div class="form-group">
-									<label for="exampleInputEmail1">Email address</label> <input name='email'
+									<label for="exampleInputEmail1">Email address</label> <input name='email' value="prueba@prueba.com"
 										type="email" class="form-control" id="exampleInputEmail1"
 										aria-describedby="emailHelp" placeholder="Enter email">
 									<small id="emailHelp" class="form-text text-muted">We'll
 										never share your email with anyone else.</small>
 								</div>
 								<div class="form-group">
-									<label for="exampleInputPassword1">Password</label> <input name='password'
+									<label for="exampleInputPassword1">Password</label> <input name='password' value="prueba"
 										type="password" class="form-control"
 										id="exampleInputPassword1" placeholder="Password">
 								</div>
