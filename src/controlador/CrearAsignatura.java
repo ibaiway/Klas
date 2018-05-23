@@ -5,30 +5,43 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mysql.jdbc.Connection;
 
+import modelo.SubjectModelo;
+import objects.Subject;
 
 
-public class CrearAsignatura {
+
+public class CrearAsignatura extends HttpServlet{
 
 	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException{
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		
 		String titulo = request.getParameter("Titulo");
 		String descripcion = request.getParameter("Descripcion");
+		
 		try{
-			Class.forName("com.myql.jdbc.Driver");
-			Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/java","klas","1234");
-			PreparedStatement ps = ((java.sql.Connection)con).prepareStatement("insert into Subject(name,description) values(?,?)");
-			ps.setString(1, titulo);
-			ps.setString(2, descripcion);
-			ps.execute();
+			Subject subject = new Subject();
+			subject.setName(titulo);
+			subject.setDescription(descripcion);
+			
+			SubjectModelo subjectModelo = new SubjectModelo();
+			subjectModelo.insert(subject);
+			
+//			RequestDispatcher rd = request.getRequestDispatcher("www/subjectlist.jsp?e=1");
+//			rd.forward(request, response);
+			response.sendRedirect("SubjectList.jsp");
+			
 		}catch(Exception e){
+			
 			System.out.println(e);
+			
 		}
 		
 	}

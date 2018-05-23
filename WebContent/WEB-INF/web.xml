@@ -28,6 +28,10 @@
         <url-pattern>/ListarTopics</url-pattern>
     </servlet-mapping>
     
+    
+    
+    
+    
     <servlet>
         <servlet-name>CrearAsignatura</servlet-name>
         <servlet-class>controlador.CrearAsignatura</servlet-class>
@@ -37,6 +41,12 @@
         <servlet-name>CrearAsignatura</servlet-name>
         <url-pattern>/CrearAsignatura</url-pattern>
     </servlet-mapping>
+    
+    
+    
+    
+    
+    
     
     <servlet>
         <servlet-name>ListarSubject</servlet-name>
