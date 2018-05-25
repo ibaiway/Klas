@@ -1,5 +1,6 @@
 package controlador;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,11 +23,11 @@ public class ListarSubject extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		//Recibe los datos
 		
-//		HttpSession session = request.getSession();
-//		User userLogged = (User)session.getAttribute("userLogged");
+		HttpSession session = request.getSession();
+		User userLogged = (User)session.getAttribute("userLogged");
 		
 		SubjectModelo subjectModelo = new SubjectModelo();
-		ArrayList<Subject> subjects = subjectModelo.selectByUser(1);//userLogged.getId()
+		ArrayList<Subject> subjects = subjectModelo.selectByUser(userLogged.getId());
 		
 		TopicModelo topicModelo = new TopicModelo();
 		
