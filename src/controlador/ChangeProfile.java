@@ -21,7 +21,7 @@ import objects.User;
 public class ChangeProfile extends HttpServlet{
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		
+		System.out.println("ajhadfkh");
 		HttpSession session = request.getSession();
 		String password = request.getParameter("password");
 		User user = (User) session.getAttribute("user");

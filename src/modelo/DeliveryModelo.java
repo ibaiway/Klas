@@ -20,7 +20,7 @@ public class DeliveryModelo extends Conector {
 
 		try {
 			Statement st = super.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from deliveries");
+			ResultSet rs = st.executeQuery("select * from delivery");
 			while (rs.next()) {
 				Delivery delivery = new Delivery();
 				delivery.setId_delivery(rs.getInt("id_delivery"));
@@ -44,7 +44,7 @@ public class DeliveryModelo extends Conector {
 				
 				
 				try {
-					PreparedStatement pst= super.conexion.prepareStatement("select * from deliveries where id_delivery = ? ");
+					PreparedStatement pst= super.conexion.prepareStatement("select * from delivery where id_delivery = ? ");
 					pst.setInt(1, id_delivery);
 					//st.setInt(1, "id_delivery");
 					ResultSet rs = pst.executeQuery();
@@ -67,7 +67,7 @@ public class DeliveryModelo extends Conector {
 
 
 		try {
-			PreparedStatement pst = super.conexion.prepareStatement("select count(id_delivery) from deliveries where id_usuario = ?");
+			PreparedStatement pst = super.conexion.prepareStatement("select count(id_delivery) from delivery where id_usuario = ?");
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
@@ -85,7 +85,7 @@ public class DeliveryModelo extends Conector {
 		
 		PreparedStatement pst;
 		try {
-			pst = super.conexion.prepareStatement("select * from deliveries where id_usuario = ? AND id_assignment = ?");
+			pst = super.conexion.prepareStatement("select * from delivery where id_usuario = ? AND id_assignment = ?");
 		pst.setInt(1, idUser);
 		pst.setInt(2, idAssignment);
 		ResultSet rs = pst.executeQuery();
@@ -104,7 +104,7 @@ public class DeliveryModelo extends Conector {
 		//update delivery set id_assignment=4, id_usuario=14, file='unfilerandom' where id_delivery=5
 		PreparedStatement pst;
 		try {
-			pst = super.conexion.prepareStatement("update deliveries set id_assignment=?, id_usuario=?, file=? where id_delivery=?");
+			pst = super.conexion.prepareStatement("update delivery set id_assignment=?, id_usuario=?, file=? where id_delivery=?");
 			pst.setInt(1, delivery.getId_assignment());
 			pst.setInt(2, delivery.getId_usuario());
 			pst.setString(3, delivery.getFile());
