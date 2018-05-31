@@ -15,7 +15,7 @@
 		<div class="card mb-3">
 			<h3 class="card-header">Modificar datos</h3>
 			<div class="card-body">
-				<form action="../ChangeProfile" method="post">
+				<form action="ChangeProfile" method="post">
 					<fieldset>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Nombre</label> <input name="name"

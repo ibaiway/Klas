@@ -1,73 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
-    version="2.4">
-    
-      <display-name>Servlets Klas</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <display-name>Servlets Klas</display-name>
   <description>
      Servlets de la pagina Klas
   </description>
-  
-  
-    <!-- Servlets -->
-	
-	<servlet>
-	    <servlet-name>TestServlet</servlet-name>
-	    <jsp-file>/index.html</jsp-file>
-	</servlet>
-	
-	<servlet>
-        <servlet-name>ListarTopics</servlet-name>
-        <servlet-class>controlador.ListarTopics</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ListarTopics</servlet-name>
-        <url-pattern>/ListarTopics</url-pattern>
-    </servlet-mapping>
-    
-    
-    
-    
-    
-    <servlet>
-        <servlet-name>CrearAsignatura</servlet-name>
-        <servlet-class>controlador.CrearAsignatura</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>CrearAsignatura</servlet-name>
-        <url-pattern>/CrearAsignatura</url-pattern>
-    </servlet-mapping>
-    
-    
-    
-    
-    
-    
-    
-    <servlet>
-        <servlet-name>ListarSubject</servlet-name>
-        <servlet-class>controlador.ListarSubject</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ListarSubject</servlet-name>
-        <url-pattern>/ListarSubject</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ChangeProfile</servlet-name>
-        <servlet-class>controlador.ChangeProfile</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ChangeProfile</servlet-name>
-        <url-pattern>/ChangeProfile</url-pattern>
-    </servlet-mapping>
-    
-	<!-- fin de los servlets -->
-
-
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <jsp-file>/index.html</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>ListarTopics</servlet-name>
+    <servlet-class>controlador.ListarTopics</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListarTopics</servlet-name>
+    <url-pattern>/ListarTopics</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CrearAsignatura</servlet-name>
+    <servlet-class>controlador.CrearAsignatura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrearAsignatura</servlet-name>
+    <url-pattern>/CrearAsignatura</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListarSubject</servlet-name>
+    <servlet-class>controlador.ListarSubject</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListarSubject</servlet-name>
+    <url-pattern>/ListarSubject</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChangeProfile</servlet-name>
+    <servlet-class>controlador.ChangeProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeProfile</servlet-name>
+    <url-pattern>/ChangeProfile</url-pattern>
+  </servlet-mapping>
 </web-app>

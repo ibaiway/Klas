@@ -9,7 +9,7 @@
 <%@ page import="objects.User"%>
 <%@ page import="modelo.DeliveryModelo" %>
 <% User user = (User) session.getAttribute("user");
-	DeliveryModelo deliveryModelo = new DeliveryModelo();
+	int nTrabajo = (Integer) request.getAttribute("nTrabajo");
 %>
 </head>
 <body>
@@ -34,7 +34,7 @@
     <p class="card-text"><strong>Fecha de Nacimiento:</strong> <%= user.getBirthdate() %> </p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Trabajos entregados:</strong> <%= deliveryModelo.countByUser(user.getId()) %> </li>
+    <li class="list-group-item"><strong>Trabajos entregados:</strong> <%= nTrabajo %> </li>
     <li class="list-group-item">Dapibus ac facilisis in</li>
     <li class="list-group-item">Vestibulum at eros</li>
   </ul>

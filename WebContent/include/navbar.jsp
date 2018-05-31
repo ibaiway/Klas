@@ -13,7 +13,7 @@
         <a class="nav-link" href="ListarSubject">Asignaturas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Klas/www/profile.jsp">Perfil</a>
+        <a class="nav-link" href="Profile">Perfil</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
